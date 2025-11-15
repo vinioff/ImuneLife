@@ -1,0 +1,279 @@
+/* === RESET BÁSICO E BODY === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0c2a4c; 
+    color: #fff;
+    padding-left: 76px; /* Empurra o conteúdo para dar espaço à navbar fechada */
+    transition: padding-left 0.4s ease; /* Anima essa transição */
+}
+
+/* Quando a navbar está aberta (hover), aumenta o espaço do conteúdo */
+#sidebar:hover ~ body {
+    padding-left: 260px; /* Largura da navbar aberta */
+}
+
+/* ========================================
+ INÍCIO DOS COMENTÁRIOS DA NAVBAR
+========================================
+*/
+
+/* === NAVBAR LATERAL (SIDEBAR) === */
+
+/* O container principal da navbar */
+#sidebar {
+    background-color: #F1E8D6; /* Cor Bege de fundo */
+    width: 76px; /* Largura inicial (fechada) */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    position: fixed; /* Fixa na tela, mesmo com rolagem */
+    top: 0;
+    left: 0;
+    display: flex; /* Usa flexbox... */
+    flex-direction: column; /* ...para organizar os filhos em coluna */
+    justify-content: space-between; /* Joga o conteúdo de cima (links) para o topo e o rodapé (sobre) para baixo */
+    padding: 12px 0px; /* Espaçamento interno */
+    transition: width 0.4s ease; /* A ANIMAÇÃO! Expande a largura suavemente */
+    overflow: hidden; /* Esconde o texto que "vazar" quando ela estiver fechada */
+    z-index: 100; /* Garante que a navbar fique por cima de todo o resto */
+}
+
+/* Quando o mouse passa por cima da navbar... */
+#sidebar:hover {
+    width: 260px; /* ...ela expande para 260px */
+}
+
+/* Conteúdo de cima (Logo e Itens) */
+#sidebar_content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo no topo */
+#sidebar_logo {
+    width: 100%; /* Ocupa toda a largura da sidebar */
+    padding: 10px 0; /* Espaçamento */
+    margin-bottom: 10px; /* Margem abaixo da logo */
+    display: flex; /* Para centralizar a imagem... */
+    justify-content: center; /* ...horizontalmente */
+}
+
+/* A imagem da logo */
+#sidebar_logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Deixa a logo redonda */
+    object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
+}
+
+/* Lista de itens (links) */
+#side_items {
+    list-style: none; /* Remove as "bolinhas" da lista */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espaço de 8px entre cada item da lista */
+}
+
+/* Cada link <a> dentro de um item */
+.side-item a {
+    display: flex; /* Alinha o ícone e o texto lado a lado */
+    align-items: center; /* Centraliza eles verticalmente */
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #3B9CF6; /* Cor Azul */
+    padding: 12px 0; /* Espaçamento interno (para o link ficar "alto") */
+    border-radius: 0; /* Sem bordas arredondadas */
+    white-space: nowrap; /* Impede que o texto quebre linha */
+    width: 100%;
+}
+
+/* Efeito hover nos links */
+.side-item a:hover {
+    background-color: rgba(59, 156, 246, 0.15); /* Fundo azul bem claro ao passar o mouse */
+}
+
+/* Ícones <i> dos links */
+.side-item a i {
+    font-size: 1.4rem; /* Tamanho do ícone */
+    color: #3B9CF6; /* Cor Azul */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* PONTO CHAVE: Garante que o ícone tenha 76px de largura,
+       assim, quando a navbar está fechada, ele fica perfeitamente
+       centralizado. E quando abre, o texto começa alinhado. */
+    min-width: 76px; 
+}
+
+/* O texto (descrição) de cada link */
+.item-description {
+    display: none; /* Escondido por padrão (quando a navbar está fechada) */
+    margin-left: 10px; /* Espaço entre o ícone e o texto */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Mostra o texto quando a navbar está aberta (hover) */
+#sidebar:hover .item-description {
+    display: block; /* Faz o texto aparecer */
+}
+
+/* Rodapé "Sobre" */
+#sidebar_footer {
+    padding-top: 10px;
+    /* Linha azul clara que separa o "Sobre" dos links */
+    border-top: 1px solid rgba(59, 156, 246, 0.3);
+}
+
+/* O link "Sobre" */
+#about_btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3B9CF6;
+    padding: 12px 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Efeito hover no link "Sobre" */
+#about_btn:hover {
+    background-color: rgba(59, 156, 246, 0.15);
+}
+
+/* Ícone do link "Sobre" */
+#about_btn i {
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    min-width: 76px; /* Alinha com os ícones de cima */
+}
+
+/* ========================================
+ FIM DOS COMENTÁRIOS DA NAVBAR
+========================================
+*/
+
+
+/* === ESTILOS DO CONTEÚDO PRINCIPAL (MAIN) === */
+
+#main_content {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Banner de Vacinação */
+.banner {
+    background-color: #1a3a60;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+}
+.banner h2 strong {
+    display: block;
+}
+
+/* === CORREÇÃO DO BANNER (PARA RETANGULAR E MAIOR) === */
+
+/* O container que segura a imagem do banner */
+.banner-icon {
+    background-color: #0c2a4c;
+    border: 3px solid #3B9CF6;
+    border-radius: 10px; /* Bordas arredondadas para o retângulo */
+    width: 300px;  /* Aumentei a largura */
+    height: 200px; /* Aumentei a altura */
+    box-shadow: 0 0 20px rgba(59, 156, 246, 0.7); /* Aumentei o brilho */
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* A imagem DENTRO do container do banner */
+.banner-icon img {
+    width: 100%; /* Ocupa 100% da largura do container */
+    height: 100%; /* Ocupa 100% da altura do container */
+    object-fit: cover; /* Faz a imagem preencher todo o espaço, cortando se necessário */
+    padding: 0; /* Removendo o padding para a imagem preencher totalmente */
+}
+/* === FIM DA CORREÇÃO DO BANNER === */
+
+
+.banner p {
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+/* Seção do Mapa */
+.map-section {
+    background-color: #F1E8D6;
+    padding: 20px;
+    border-radius: 15px;
+    color: #333;
+}
+
+.map-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Estilo para o iframe do mapa */
+.map-section iframe {
+    width: 100%; /* Faz o mapa ocupar 100% da largura do container */
+    height: 400px; /* Altura padrão para o mapa */
+    border: none; /* Remove a borda padrão do iframe */
+    border-radius: 10px; /* Bordas arredondadas para combinar com o design */
+}
+
+.map-button {
+    background-color: #3B9CF6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+.map-button:hover {
+    background-color: #2a8ce4;
+}
+
+/* Chatbot (Estilo básico) */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.chatbot img {
+    width: 100px;
+}
+
+.chat-bubble {
+    background-color: #fff;
+    color: #333;
+    padding: 15px;
+    border-radius: 15px 15px 0 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
