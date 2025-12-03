@@ -37,6 +37,7 @@
         .form-input {
             background-color: 10;
             border: none;
+            border-radius: 4px;
         }
 
         input[type="date"].form-input {
@@ -199,7 +200,7 @@
 
             const card = document.querySelector('.registration-card');
             const exitMessage = document.createElement('div');
-            exitMessage.className = 'absolute inset-0 bg-red-500/90 flex items-center justify-center rounded-3xl text-white text-xl font-bold transition-opacity duration-300';
+            exitMessage.className = 'absolute inset-0 bg- white-500/90 flex items-center justify-center rounded-3xl text-white text-xl font-bold transition-opacity duration-300';
             exitMessage.textContent = 'Saindo...';
             card.appendChild(exitMessage);
 
