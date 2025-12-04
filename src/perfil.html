@@ -189,6 +189,7 @@
                 </button>
 
                 <table class="w-full text-sm">
+                    
                     <thead>
                         <tr class="text-left border-b border-white/40">
                             <th>Tipo</th>
@@ -197,6 +198,23 @@
                             <th>Dose</th>
                         </tr>
                     </thead>
+
+                    <ul id="lista_vacinas" class="mt-2"></ul>
+                    
+                    <form id="form_vacina" class="mt-6">
+                        <input id="vacina_nome" type="text" placeholder="Nome da vacina" required>
+                        <input id="vacina_data" type="date" required>
+                        <button class="px-4 py-2 bg-teal-500 rounded-lg">Adicionar</button>
+                    </form>
+
+                    <!-- <span id="nomePerfil"></span>
+                    <span id="emailPerfil"></span>
+                    <span id="nascimentoPerfil"></span>
+                    <span id="cpfPerfil"></span>
+                    <span id="rgPerfil"></span>
+                    <span id="cnsPerfil"></span> -->
+
+
 
                     <tbody class="opacity-80">
                         <tr class="h-10"><td></td><td></td><td></td><td></td></tr>
@@ -225,6 +243,52 @@
         </div>
 
     </main>
-
+    <script type="module">
+        import { obterUsuario, adicionarVacina } from "./api.js";
+    
+        const usuario = obterUsuario();
+    
+        // --- CARREGAR DADOS DO USUÁRIO NO PERFIL --- //
+        document.getElementById("perfil_nome").textContent = usuario.nome;
+        document.getElementById("perfil_email").textContent = usuario.email;
+        document.getElementById("perfil_nascimento").textContent = usuario.nascimento;
+        document.getElementById("perfil_cpf").textContent = usuario.cpf;
+        document.getElementById("perfil_rg").textContent = usuario.rg;
+        document.getElementById("perfil_cns").textContent = usuario.cns;
+    
+        // --- LISTAR VACINAS --- //
+        function atualizarListaVacinas() {
+            const lista = document.getElementById("lista_vacinas");
+            lista.innerHTML = "";
+    
+            if (usuario.vacinas && usuario.vacinas.length > 0) {
+                usuario.vacinas.forEach(v => {
+                    const li = document.createElement("li");
+                    li.textContent = `${v.nome} - ${v.data}`;
+                    lista.appendChild(li);
+                });
+            } else {
+                lista.innerHTML = "<p>Nenhuma vacina registrada.</p>";
+            }
+        }
+    
+        atualizarListaVacinas();
+    
+        // --- ADICIONAR VACINA --- //
+        document.getElementById("form_vacina").addEventListener("submit", (e) => {
+            e.preventDefault();
+    
+            const vacina = {
+                nome: document.getElementById("vacina_nome").value,
+                data: document.getElementById("vacina_data").value
+            };
+    
+            adicionarVacina(vacina);   
+    
+            atualizarListaVacinas();
+            e.target.reset();
+        });
+    </script>
+    
 </body>
 </html>
