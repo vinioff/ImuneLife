@@ -13,6 +13,7 @@
             min-height: 100vh;
             overflow: hidden;
         }
+        
         .cityscape {
             position: absolute;
             bottom: 0;
@@ -33,21 +34,22 @@
             z-index: 10;
         }
 
-
         .form-input {
-            background-color: 10;
+            color: #000 !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
             border: none;
-            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
         }
 
         input[type="date"].form-input {
-            color: white;
+            color: #000;
         }
         input[type="date"].form-input::-webkit-calendar-picker-indicator {
             filter: invert(1); 
             cursor: pointer;
         }
-
 
         .user-icon-svg {
             fill: rgba(255, 255, 255, 0.8);
@@ -72,7 +74,6 @@
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
-
 
     <div class="floating-shape shape1">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 6v12l9 5l9-5V6zm0 2.23l7 3.89v7.76l-7 3.89l-7-3.89V6.12zM12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6"/></svg>
@@ -99,10 +100,8 @@
             <h2 class="text-sm opacity-90">Que tal começar se cadastrando?</h2>
         </header>
 
-
         <div class="flex justify-center mb-8">
             <div class="user-icon-svg w-24 h-24 rounded-full flex items-center justify-center">
-
                 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -111,45 +110,39 @@
             </div>
         </div>
 
-
         <form id="registrationForm" class="space-y-4">
 
             <div>
-                <label for="nome" class="block text-sm mb-1 opacity-90" id="perfil_nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" class="form-input" required placeholder="Digite seu nome completo">
+                <label for="nome" class="block text-sm mb-1 opacity-90">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" class="form-input text-sm placeholder-gray-400" required placeholder="Digite seu nome completo">
             </div>
-
 
             <div>
-                <label for="email" class="block text-sm mb-1 opacity-90" id="perfil_email">E-mail:</label>
-                <input type="email" id="email" name="email" class="form-input" required placeholder="seunome@exemplo.com">
+                <label for="email" class="block text-sm mb-1 opacity-90">E-mail:</label>
+                <input type="email" id="email" name="email" class="form-input text-sm placeholder-gray-400" required placeholder="seunome@exemplo.com">
             </div>
-
 
             <div class="grid grid-cols-5 gap-3">
                 <div class="col-span-2">
-                    <label for="rg" class="block text-sm mb-1 opacity-90" id="perfil_rg">RG:</label>
-                    <input type="text" id="rg" name="rg" class="form-input" placeholder="00.000.000-0">
+                    <label for="rg" class="block text-sm mb-1 opacity-90">RG:</label>
+                    <input type="text" id="rg" name="rg" class="form-input text-sm placeholder-gray-400" placeholder="00.000.000-0">
                 </div>
                 <div class="col-span-3">
-                    <label for="cpf" class="block text-sm mb-1 opacity-90" id="perfil_cpf">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" class="form-input" placeholder="000.000.000-00">
+                    <label for="cpf" class="block text-sm mb-1 opacity-90">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" class="form-input text-sm placeholder-gray-400" placeholder="000.000.000-00">
                 </div>
             </div>
-
 
             <div>
                 <label for="nascimento" class="block text-sm mb-1 opacity-90">Data de Nascimento:</label>
-                <input type="date" id="nascimento" name="nascimento" class="form-input" required>
+                <input type="date" id="nascimento" name="nascimento" class="form-input text-sm placeholder-gray-400" required>
             </div>
-
 
             <div>
-                <label for="cns" class="block text-sm mb-1 opacity-90" id="perfil_cns">Cartão Nacional de Saúde:</label>
-                <input type="text" id="cns" name="cns" class="form-input" placeholder="Número do CNS">
+                <label for="cns" class="block text-sm mb-1 opacity-90">Cartão Nacional de Saúde:</label>
+                <input type="text" id="cns" name="cns" class="form-input text-sm placeholder-gray-400" placeholder="Número do CNS">
             </div>
         </form>
-
 
         <div class="mt-8 flex justify-between items-center">
 
@@ -157,8 +150,7 @@
                 Salvar
             </button>
 
-
-            <a href="/index.html"><button id="exitButton" class="flex items-center space-x-1 text-white/80 hover:text-white transition duration-200 text-sm" href="/index.html">
+            <button id="exitButton" class="flex items-center space-x-1 text-white/80 hover:text-white transition duration-200 text-sm">
                 <span>Sair</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -166,70 +158,28 @@
                     <path d="M16 17l5-5l-5-5"></path>
                     <path d="M21 12H9"></path>
                 </svg>
-            </button></a>
+            </button>
         </div>
     </div>
 
-
     <div class="cityscape"></div>
 
+<script>
+  // Adicionar funcionalidade do botão Sair (igual ao primeiro HTML)
+document.getElementById('exitButton').addEventListener('click', function() {
+    const card = document.querySelector('.registration-card');
+    const exitMessage = document.createElement('div');
+    exitMessage.className = 'absolute inset-0 bg-white/90 flex items-center justify-center rounded-3xl text-black text-xl font-bold transition-opacity duration-300 z-30';
+    exitMessage.textContent = 'Saindo...';
+    card.appendChild(exitMessage);
 
-    <script>
-
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const card = document.querySelector('.registration-card');
-            const form = document.getElementById('registrationForm');
-            const successMessage = document.createElement('div');
-            successMessage.className = 'absolute inset-0 bg-teal-500/90 flex items-center justify-center rounded-3xl text-white text-xl font-bold transition-opacity duration-300';
-            successMessage.textContent = 'Cadastro Salvo com Sucesso!';
-
-            card.appendChild(successMessage);
-            form.reset();
-            
-            setTimeout(() => {
-                successMessage.remove();
-            }, 3000);
-            
-            console.log('Dados do formulário enviados (Simulação)');
-        });
-
-
-        document.getElementById('exitButton').addEventListener('click', function() {
-
-            const card = document.querySelector('.registration-card');
-            const exitMessage = document.createElement('div');
-            exitMessage.className = 'absolute inset-0 bg- white-500/90 flex items-center justify-center rounded-3xl text-white text-xl font-bold transition-opacity duration-300';
-            exitMessage.textContent = 'Saindo...';
-            card.appendChild(exitMessage);
-
-            setTimeout(() => {
-                exitMessage.remove();
-            }, 2000);
-            
-            console.log('Botão Sair clicado (Simulação)');
-        });
-
-        import { salvarUsuario } from "./api.js";
-
-            document.getElementById("registrationForm").addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                const usuario = {
-                    nome: nome.value,
-                    email: email.value,
-                    nascimento: nascimento.value,
-                    cpf: cpf.value,
-                    rg: rg.value,
-                    cns: cns.value,
-                    vacinas: [] // inicia com lista vazia
-                };
-
-                salvarUsuario(usuario);
-
-                window.location.href = "perfil.html";
-            });
-    </script>
+    setTimeout(() => {
+        // Redirecionar para a página inicial após 2 segundos
+        window.location.href = '/index.html';
+    }, 2000);
+    
+    console.log('Botão Sair clicado (Simulação)');
+});
+</script>
 </body>
 </html>
